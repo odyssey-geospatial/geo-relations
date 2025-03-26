@@ -3,21 +3,21 @@
 
 ### Generate datasets to test geometric relationships
 	
-This package generates datasets that can be used to test code that 
-describes spatial relationships between things. 
+This package generates datasets to develop and test code that 
+quantifying spatial relationships. 
 For example, if you have something that determines whether two lines intersect,
-then you can crate a dataset of thousands of line pairs, soe of which intersect and
-some of which don't. 
+then you can create a dataset of thousands of line pairs, some of which intersect and
+some of which don't, and use that to train and test a model. 
 
-The intended use of this package is to test methods that estimate
+The intended use is for models that estimate
 geometric relationships based on approximate positional encodings. 
 For example, "given approximate encodings for a pair of lines,
 how well can I determine whether the lines intersect?"
 
-In order to give the data some realism, this package pulls shapes of 
+In order to give the data some geospatial realism, this package pulls shapes of 
 various entities from OpenStreetMap. It then moves and shifts them
 around in order to assure that prescribed relationships either
-do or  do not exist between them.
+do or do not exist between them.
 
 
 ## Supporting packages
