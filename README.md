@@ -17,7 +17,7 @@ how well does my model determine whether the lines intersect?"
 
 In order to give the data some geospatial realism, this package pulls shapes of 
 various entities from OpenStreetMap. It then moves and shifts them
-around in order to assure that prescribed relationships either
+around to assure that prescribed relationships either
 do or do not exist between them.
 
 All shapes are returned within a square 2D coordinate system,
