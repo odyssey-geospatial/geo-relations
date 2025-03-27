@@ -29,8 +29,7 @@ Here is a quick example of its use.
 from geo_relations import ShapeHarvester
 from geo_relations import RelationGenerator
 
-center_lat, center_lon = 42.631024, -70.993787
-extent = 20000.0
+center_lat, center_lon, extent = 42.631024, -70.993787, 20000.0
 harvester = ShapeHarvester(center_lon, center_lat, extent)
 shapes = harvester.harvest(['linestrings', 'polygons'])
 
@@ -42,6 +41,9 @@ At this point, `a` and `b` will be, respectively, a LineString
 and a Polygon that intersect one another. Their size will be somewhere 
 around 25 units, and they will be placed at a random location 
 in a coordinate space from (0, 0) lower left to (100, 100) upper right.
+The actual shapes will be scaled versions of
+entities pulled from a 20km box centered
+on the given lon/lat location.
 If you want such a pair of shapes guaranteed NOT to intersect, 
 call 
 
