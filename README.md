@@ -23,6 +23,35 @@ do or do not exist between them.
 All shapes are returned within a square 2D coordinate system,
 of a size that you specify, with no defined length units. 
 
+Here is a quick example of its use.
+
+```python
+from geo_relations import ShapeHarvester
+from geo_relations import RelationGenerator
+
+center_lat, center_lon = 42.631024, -70.993787
+extent = 20000.0
+harvester = ShapeHarvester(center_lon, center_lat, extent)
+shapes = harvester.harvest(['linestrings', 'polygons'])
+
+generator = RelationGenerator(shapes, bounds=[0, 0, 100, 100], scale=25)
+a, b = generator.generate('linestring-intersects-polygon', True)
+```
+
+At this point, `a` and `b` will be, respectively, a LineString
+and a Polygon that intersect one another. Their size will be somewhere 
+around 25 units, and they will be placed at a random location 
+in a coordinate space from (0, 0) lower left to (100, 100) upper right.
+If you want such a pair of shapes guaranteed NOT to intersect, 
+call 
+
+```python
+a, b = generator.generate('linestring-intersects-polygon', False)
+```
+
+
+ 
+
 At this time, the types of relationships that can be generated are:
 - `point-on-linestring`
 - `point-in-polygon`
