@@ -195,10 +195,10 @@ class ShapeHarvester:
             shapes += multilinestrings
         if "multipolygons" in types:
             shapes += multipolygons
-        if "tiled_polygons" in types:
+        if "tiled-polygons" in types:
             shapes += tiles
             
-        shape_types = [g.geom_type for g in shape]
+        shape_types = [g.geom_type for g in shapes]
         self.shapes = geopandas.GeoDataFrame({'type': shape_types, 'geom': shapes})
 
         # Return it.

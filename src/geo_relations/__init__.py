@@ -3,3 +3,4 @@ __author__ = "John B Collins"
 
 from .harvesters import ShapeHarvester
 from .generators import RelationGenerator
+from .utilities import draw_shape
