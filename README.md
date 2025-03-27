@@ -19,6 +19,10 @@ various entities from OpenStreetMap. It then moves and shifts them
 around in order to assure that prescribed relationships either
 do or do not exist between them.
 
+## Examples
+
+![point-on-linestring](images/point-on-linestring.png)
+
 
 ## Supporting packages
 
