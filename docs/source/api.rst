@@ -1,7 +1,6 @@
 API
 ===
 
-.. autosummary::
-   :toctree: generated
-
-   geo-relations
+.. autoclass::
+   :members:
+   geo_relations
