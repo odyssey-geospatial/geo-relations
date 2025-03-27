@@ -22,6 +22,11 @@ do or do not exist between them.
 ## Examples
 
 ![point-on-linestring](images/point-on-linestring.png)
+![point-in-polygon](images/point-in-polygon.png)
+![linestring-intersects-linestring](images/linestring-intersects-linestring.png)
+![linestring-intersects-polygon](images/linestring-intersects-polygon.png)
+![polygon-intersects-polygon](images/polygon-intersects-polygon.png)
+![polygon-borders-polygon](images/polygon-borders-polygon.png)
 
 
 ## Supporting packages
