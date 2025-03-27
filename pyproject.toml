@@ -1,0 +1,23 @@
+[project]
+name = "geo-relations"
+description = "Gernerate datasets of geospatial shapes with prescribed relations"
+authors = [
+    {name = "John Collins", email = "john@odyssey-geospatial.com"}
+]
+version = "0.0.1"
+readme = "README.md"
+license = {file = "LICENSE"}
+keywords = [
+    "geospatial", "machine learning", "datasets"
+]
+dependencies = [
+    "shapely",
+    "osmnx",
+    "geopandas"
+]
+
+[build-system]
+requires = ["flit_core >=3.11,<4"]
+build-backend = "flit_core.buildapi"
+
+
