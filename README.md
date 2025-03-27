@@ -3,7 +3,7 @@
 
 ### Generate datasets to test geometric relationships
 	
-This package generates datasets to develop and test code that 
+This package generates datasets to develop and test code 
 quantifying spatial relationships. 
 For example, if you have something that determines whether two lines intersect,
 then you can create a dataset of thousands of line pairs, some of which intersect and
@@ -11,13 +11,26 @@ some of which don't, and use that to train and test a model.
 
 The intended use is for models that estimate
 geometric relationships based on approximate positional encodings. 
-For example, "given approximate encodings for a pair of lines,
-how well can I determine whether the lines intersect?"
+It helps answers questions like, 
+"given approximate encodings for a pair of lines,
+how well does my model determine whether the lines intersect?"
 
 In order to give the data some geospatial realism, this package pulls shapes of 
 various entities from OpenStreetMap. It then moves and shifts them
 around in order to assure that prescribed relationships either
 do or do not exist between them.
+
+All shapes are returned within a square 2D coordinate system,
+of a size that you specify, with no defined length units. 
+
+At this time, the types of relationships that can be generated are:
+- `point-on-linestring`
+- `point-in-polygon`
+- `linestring-intersects-linestring`
+- `linestring-intersects-polygon`
+- `polygon-intersects-polygon`
+- `polygon-borders-polygon`
+
 
 ## Examples
 
