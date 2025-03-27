@@ -2,7 +2,7 @@ import shapely
 import numpy as np
 
 
-class Generator:
+class RelationGenerator:
 
     """
     Generate pairs of geometries having particular types of spatial relationships.
@@ -10,7 +10,7 @@ class Generator:
 
     def __init__(self, fodder=None, bounds=[0, 0, 100, 100], scale=10):
         """
-        :param fodder: geo data frme with columns 'type' and 'geom'
+        :param fodder: geopandas data frme with columns 'type' and 'geom'
         :param bounds: [xmin, xmax, ymin, ymax]: box in which shapes will be placed
         :param scale: approximate size of returned LineStrings and Polygons
         """

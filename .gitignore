@@ -2,6 +2,9 @@
 # keep but don't want pushed.
 keep/
 
+# [JC] 
+cache/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
