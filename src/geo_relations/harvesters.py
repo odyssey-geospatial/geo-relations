@@ -5,22 +5,23 @@ import shapely
 
 
 class ShapeHarvester:
+    """
+    Harvest shapes from a lon lat bounding box in OpenStreetMap
+        
+    Args:
+        center_lon: Longitude of bounding box center.
+        center_lat: Latitude of bounding box center.
+        extent: Width and height of the bounding box in meters.
 
-    def __init__(self, center_lon, center_lat, extent):
-        """
-        Create an object that harvests shapels from OpenStreetMap
+    The input parameters define a square bounding box
+    from which shapes will be harvested.
+    This package assumes that the only relevant characteristic of any
+    geospatial entity is its shape. There is no attempt to capture information
+    about what the shapes represent. They should just be considered featureless
+    Points, LineStrings, and Polygons.
+    """
 
-        :param center_lon, center_lat: center of the area from which to pull shapes.
-        :param extent: width and height of the area, in meters
-
-        The input parameters define a square Area Of Interest (AOI) 
-        from which shapes will be harvested.
-
-        This package assumes that the only relevant characteristic of any
-        geospatial entity is its shape. There is no attempt to capture information
-        about what the shapes represent. They should just be considered featureless
-        Points, LineStrings, and Polygons.
-        """
+    def __init__(self, center_lon:float, center_lat:float, extent:float):
         self.center_lon = center_lon
         self.center_lat = center_lat
         self.extent = extent
@@ -51,33 +52,35 @@ class ShapeHarvester:
         self.shapes = None
 
 
-    def harvest(self, types):
-
+    def harvest(self, types:list[str]):
         """
         Pull shapes from OSM.
-        :param types: types of shapes to pull
+        
+        Args:
+        	types: List of the types of shapes to pull
 
-        The "types" parameter is a list of strings indicating which types of 
-        shapes to pull from OSM. Even though the attributes of the shapes are 
+        The `types` parameter is a list of strings indicating which types of 
+        shapes to pull from OSM. 
+        Even though the attributes of the shapes are 
         not relevant in this package, it might help to know exactly what is being
         pulled. If `types` includes the following strings, here is what you will get:
 
-        - "points": A sampling of points. These are OSM entities of type "amenity". 
+        - `points`: A sampling of points. These are OSM entities of type "amenity". 
           Any such entities that is not a "Point" is replaced with its centroid.
 
-        - "linestrings": A sampling of road segments and linear water features.
+        - `linestrings`: A sampling of road segments and linear water features.
 
-        - "polygons": A sampling of polygonal "landuse" objects.
+        - `polygons`: A sampling of polygonal "landuse" objects.
 
-        - "tiled_polygons": Any level-8 administrative units. This is treated
+        - `tiled_polygons`: Any level-8 administrative units. This is treated
           as a special case different from "polygons", because these types of entities
           tend to share borders, so they can be used to test for adjacency.
 
-        - "multipoints": Random groupings of Point objects
+        - `multipoints``: Random groupings of Point objects
 
-        - "multilinestrings": Random groupings of LineString objects
+        - `multilinestrings`: Random groupings of LineString objects
 
-        - "multipolygons": Random groupings of Polygon objects
+        - `multipolygons`: Random groupings of Polygon objects
 
         All returned polygons will be in a local projected coordinate system, in meters.
         """

@@ -6,14 +6,14 @@ class RelationGenerator:
 
     """
     Generate pairs of geometries having particular types of spatial relationships.
+    
+    Args:
+    	fodder: geopandas data farme with columns 'type' and 'geom'
+        bounds: [xmin, xmax, ymin, ymax]: box in which shapes will be placed
+        scale: approximate size of returned LineStrings and Polygons
     """
 
     def __init__(self, fodder=None, bounds=[0, 0, 100, 100], scale=10):
-        """
-        :param fodder: geopandas data frme with columns 'type' and 'geom'
-        :param bounds: [xmin, xmax, ymin, ymax]: box in which shapes will be placed
-        :param scale: approximate size of returned LineStrings and Polygons
-        """
         self.fodder = fodder
         self.xmin = bounds[0]
         self.ymin = bounds[1]
@@ -22,7 +22,20 @@ class RelationGenerator:
         self.scale = scale
         
 
-    def generate(self, relation, sense, max_attempts=20):
+    def generate(self, relation:str, sense:bool, max_attempts:int=20):
+        """
+        Generate a pair of shapes with a prescribed relationship.
+        
+        Args:
+        	relation: Type of relationship
+        	sense: Either `True` or `False`
+        	max_attempts: How many times to try
+        	
+        The `max_attempts` parameter is required because generating some 
+        types of relations depends on random sampling, which can possibly
+        fail to produce the correct results. If it fails, return values
+        are `None`.
+        """
 
         if relation == 'point-on-linestring':
             gen_func = self._point_on_linestring
@@ -86,9 +99,6 @@ class RelationGenerator:
 
     
     def reposition(self, geoms):
-        """
-        Shift shapes to a random location within the AOI.
-        """
         if type(geoms) != list:
             geoms = [geoms]
         if len(geoms) == 1:
