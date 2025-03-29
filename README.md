@@ -26,12 +26,13 @@ of a size that you specify, with no defined length units.
 Here is a quick example of its use.
 
 ```python
-from geo_relations import ShapeHarvester
+from geo_relations import OSMShapeCollector
 from geo_relations import RelationGenerator
 
-center_lat, center_lon, extent = 42.631024, -70.993787, 20000.0
-harvester = ShapeHarvester(center_lon, center_lat, extent)
-shapes = harvester.harvest(['linestrings', 'polygons'])
+center_lat, center_lon = 42.631024, -70.993787
+extent = 20000.0
+collector = OSMShapeCollector(center_lon, center_lat, extent)
+shapes = collector.collect(['linestrings', 'polygons'])
 
 generator = RelationGenerator(shapes, bounds=[0, 0, 100, 100], scale=25)
 a, b = generator.generate('linestring-intersects-polygon', True)
@@ -50,9 +51,6 @@ call
 ```python
 a, b = generator.generate('linestring-intersects-polygon', False)
 ```
-
-
- 
 
 At this time, the types of relationships that can be generated are:
 - `point-on-linestring`
@@ -75,6 +73,7 @@ At this time, the types of relationships that can be generated are:
 
 ## Supporting packages
 
+* `geopandas`: Supports data frames containing geometric objects.
 * `shapely`: Provides computations on geometric objects.
 * `osmnx`: Used to pull shapes from OpenStreetMap. See: Boeing, G. (2024). Modeling and Analyzing Urban Networks and Amenities with OSMnx. Working paper. https://geoffboeing.com/publications/osmnx-paper/
 
