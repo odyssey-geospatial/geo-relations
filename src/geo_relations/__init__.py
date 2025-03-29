@@ -4,7 +4,7 @@
 This package generates data for testing algorithms that are sensitive to
 spatial relationships among objects. It contains these classes.
 
-- `ShapeHarvester`: Download example shapes from OpenStreetMap.
+- `OSMShapeCollector`: Gather example shapes from OpenStreetMap.
 - `RelationGenerator`: Generates pairs of shapes having prescribed relationships.
 
 And it has this utility function:
@@ -13,9 +13,9 @@ And it has this utility function:
 """
 
 
-__version__ = "0.0.1"
+__version__ = "1.0.0"
 __author__ = "John B Collins"
 
-from .harvesters import ShapeHarvester
+from .collectors import OSMShapeCollector
 from .generators import RelationGenerator
 from .utilities import draw_shape

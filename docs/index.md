@@ -1,9 +1,11 @@
-# geo relations
+# Geo-Relations: Generate Shapes With Prescribed Spatial Relationships 
 
-## Table Of Contents
+## **Package**
+::: geo_relations
 
-This is what is here.
+## **Classes**
+::: geo_relations.OSMShapeCollector
+::: geo_relations.RelationGenerator
 
-1. [Reference](reference.md)
-
-abc
+## **Functions**
+::: geo_relations.draw_shape

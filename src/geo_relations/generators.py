@@ -1,11 +1,14 @@
 import shapely
 import numpy as np
+import geopandas
 
 
 class RelationGenerator:
 
     """
     Generate pairs of geometries having particular types of spatial relationships.
+    The shapes to be used are drawn from the input `fodder`, which 
+    should be a `geopandas` data frame.
     
     Args:
     	fodder: geopandas data farme with columns 'type' and 'geom'
@@ -13,7 +16,12 @@ class RelationGenerator:
         scale: approximate size of returned LineStrings and Polygons
     """
 
-    def __init__(self, fodder=None, bounds=[0, 0, 100, 100], scale=10):
+    def __init__(
+        self, 
+        fodder:geopandas.geodataframe.GeoDataFrame=None, 
+        bounds:list[float]=[0, 0, 100, 100], 
+        scale:float=10
+    ):
         self.fodder = fodder
         self.xmin = bounds[0]
         self.ymin = bounds[1]
@@ -35,6 +43,17 @@ class RelationGenerator:
         types of relations depends on random sampling, which can possibly
         fail to produce the correct results. If it fails, return values
         are `None`.
+
+        The `relation` parameter shoudl be one of the following.
+            * `point-on-linestring`
+            * `point-in-polygon`
+            * `linestring-intersects-linestring`
+            * `linestring-intersects-polygon`
+            * `polygon-intersects-polygon`
+            * `polygon-borders-polygon`
+
+        If you use `polygon-borders-polygon`, you should be confident that `fodder` 
+        actually contains polygons that border one another.  
         """
 
         if relation == 'point-on-linestring':

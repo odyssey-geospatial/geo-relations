@@ -4,7 +4,7 @@ description = "Gernerate datasets of geospatial shapes with prescribed relations
 authors = [
     {name = "John Collins", email = "john@odyssey-geospatial.com"}
 ]
-version = "0.0.1"
+version = "1.0.0"
 readme = "README.md"
 license = {file = "LICENSE"}
 keywords = [

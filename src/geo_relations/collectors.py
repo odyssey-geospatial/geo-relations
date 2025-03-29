@@ -4,9 +4,9 @@ import pyproj
 import shapely
 
 
-class ShapeHarvester:
+class OSMShapeCollector:
     """
-    Harvest shapes from a lon lat bounding box in OpenStreetMap
+    Collect shapes from a lon lat bounding box in OpenStreetMap
         
     Args:
         center_lon: Longitude of bounding box center.
@@ -14,7 +14,7 @@ class ShapeHarvester:
         extent: Width and height of the bounding box in meters.
 
     The input parameters define a square bounding box
-    from which shapes will be harvested.
+    from which shapes will be gathered.
     This package assumes that the only relevant characteristic of any
     geospatial entity is its shape. There is no attempt to capture information
     about what the shapes represent. They should just be considered featureless
@@ -48,11 +48,11 @@ class ShapeHarvester:
         lon1, lat1 = self.proj_inverse(extent, extent)
         self.query_bounds = [lon0, lat0, lon1, lat1]
 
-        # This will be the list of shapes harvested.
+        # This will be the list of shapes.
         self.shapes = None
 
 
-    def harvest(self, types:list[str]):
+    def collect(self, types:list[str]):
         """
         Pull shapes from OSM.
         
