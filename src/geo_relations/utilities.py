@@ -1,7 +1,7 @@
 import plotly
 from plotly.graph_objects import Scatter
 
-def draw_shape(geom, fig, irow=1, icol=1, color='blue', name='shape'):
+def draw_shape(geom, fig, irow=1, icol=1, color='blue', name='shape', markersize=10, linewidth=5):
     """
     Add a shape to a plotly figure
     
@@ -23,7 +23,7 @@ def draw_shape(geom, fig, irow=1, icol=1, color='blue', name='shape'):
         yy = [geom.xy[1][0]]
         trace = Scatter(
             x=xx, y=yy, name=name, 
-            mode='markers', marker={'color': color, 'size': 12}
+            mode='markers', marker={'color': color, 'size': markersize}
         )
         fig.append_trace(trace, irow, icol)
         
@@ -32,7 +32,7 @@ def draw_shape(geom, fig, irow=1, icol=1, color='blue', name='shape'):
         yy = [z.xy[1][0] for z in geom.geoms]
         trace = Scatter(
             x=xx, y=yy, name=name, 
-            mode='markers', marker={'color': color, 'size': 12}
+            mode='markers', marker={'color': color, 'size': markersize}
         )
         fig.append_trace(trace, irow, icol)
         
@@ -42,7 +42,8 @@ def draw_shape(geom, fig, irow=1, icol=1, color='blue', name='shape'):
         yy = [z[1] for z in coords]
         trace = Scatter(
             x=xx, y=yy, name=name, 
-            mode='lines', marker={'color': color, 'size': 12}
+            mode='lines', marker={'color': color, 'size': markersize},
+            line={'width': linewidth}
         )
         fig.append_trace(trace, irow, icol)
         
@@ -55,7 +56,8 @@ def draw_shape(geom, fig, irow=1, icol=1, color='blue', name='shape'):
             yy += [z[1] for z in coords] + [None]
         trace = Scatter(
             x=xx, y=yy, name=name, 
-            mode='lines', marker={'color': color, 'size': 12}
+            mode='lines', marker={'color': color, 'size': markersize},
+            line={'width': linewidth}
         )
         fig.append_trace(trace, irow, icol)
 
