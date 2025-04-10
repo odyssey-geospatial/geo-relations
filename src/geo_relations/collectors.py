@@ -116,15 +116,23 @@ class OSMShapeCollector:
         if 'polygons' in types or 'multipolygons' in types:
             # Get landuse polygons.
             tags = { 'landuse': ['residential', 'commercial', 'industrial', 'retail', 'farmland']}
-            df = osmnx.features.features_from_bbox(self.query_bounds, tags=tags).reset_index()
-            for rec in df.itertuples():
-                g0 = rec.geometry
-                g1 = shapely.ops.transform(self.proj_forward, g0)
-                g2 = g1.intersection(self.aoi)
-                if g2.geom_type != 'Polygon': # It can happen. 
-                    continue
-                if g2.area / g1.area > 0.1 and g2.area > 10000.0:
-                    polygons.append(g2)
+            landuse = osmnx.features.features_from_bbox(self.query_bounds, tags=tags).reset_index()
+
+            # Get admin units.
+            tags = {'boundary': 'administrative', 'admin_level': '8'}
+            admin = osmnx.features.features_from_bbox(self.query_bounds, tags=tags).reset_index()
+            iok = admin['admin_level'] == '8'
+            admin = admin[iok]
+
+            for source in [landuse, admin]:
+                for rec in source.itertuples():
+                    g0 = rec.geometry
+                    g1 = shapely.ops.transform(self.proj_forward, g0)
+                    g2 = g1.intersection(self.aoi)
+                    if g2.geom_type != 'Polygon': # It can happen. 
+                        continue
+                    if g2.area / g1.area > 0.1 and g2.area > 10000.0:
+                        polygons.append(g2)
 
         if "linestrings" in types or "multilinestrings" in types:
             # Get major roads and linear water features.
