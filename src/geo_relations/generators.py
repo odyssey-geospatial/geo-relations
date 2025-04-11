@@ -11,10 +11,10 @@ class RelationGenerator:
     should be a `geopandas` data frame.
     
     Args:
-    	fodder: geopandas data farme with columns 'type' and 'geom'
-        bounds: [xmin, xmax, ymin, ymax]: box in which shapes will be placed
-        margin: objects will not be placed within this distance of region edge
-        scale: size range of obhects as a fraction of min region extent
+    	fodder: Geopandas data farme with columns 'type' and 'geom'
+        bounds: [xmin, xmax, ymin, ymax]: Box in which shapes will be placed
+        margin: Objects will not be placed within this distance of region edge
+        scale: Size range of objects as a fraction of min region extent
     """
 
     def __init__(
