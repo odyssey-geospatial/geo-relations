@@ -1,10 +1,10 @@
 [project]
 name = "geo-relations"
-description = "Gernerate datasets of geospatial shapes with prescribed relations"
+description = "Gernerate geospatial shape pairs with prescribed relations"
 authors = [
     {name = "John Collins", email = "john@odyssey-geospatial.com"}
 ]
-version = "1.0.1"
+version = "1.0.2"
 readme = "README.md"
 license = {file = "LICENSE"}
 keywords = [

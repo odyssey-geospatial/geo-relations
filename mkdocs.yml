@@ -20,7 +20,6 @@ plugins:
     
 nav:
 - index.md
-- reference.md
 
 theme:
   name: "material"

@@ -34,13 +34,13 @@ extent = 20000.0
 collector = OSMShapeCollector(center_lon, center_lat, extent)
 shapes = collector.collect(['linestrings', 'polygons'])
 
-generator = RelationGenerator(shapes, bounds=[0, 0, 100, 100], scale=25)
+generator = RelationGenerator(shapes, bounds=[0, 0, 100, 100], scale=[0.1, 0.25])
 a, b = generator.generate('linestring-intersects-polygon', True)
 ```
 
 At this point, `a` and `b` will be, respectively, a LineString
 and a Polygon that intersect one another. Their size will be somewhere 
-around 25 units, and they will be placed at a random location 
+between 10 and 25 units, and they will be placed at a random location 
 in a coordinate space from (0, 0) lower left to (100, 100) upper right.
 The actual shapes will be scaled versions of
 entities pulled from a 20km box centered
@@ -62,6 +62,8 @@ At this time, the types of relationships that can be generated are:
 
 
 ## Examples
+
+This package generates pairs that look something like this.
 
 ![point-on-linestring](https://github.com/odyssey-geospatial/geo-relations/raw/main/images/point-on-linestring.png)
 ![point-in-polygon](https://github.com/odyssey-geospatial/geo-relations/raw/main/images/point-in-polygon.png)
