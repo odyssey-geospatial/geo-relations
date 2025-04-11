@@ -21,7 +21,7 @@ class RelationGenerator:
         self, 
         fodder:geopandas.geodataframe.GeoDataFrame=None, 
         bounds:list[float]=[0, 0, 100, 100], 
-        margin=0.0,
+        margin:float=0.0,
         scale:list[float]=[0.1, 0.5]
     ):
         self.fodder = fodder
@@ -123,13 +123,6 @@ class RelationGenerator:
 
     
     def rescale(self, g0):
-        """
-        Change the size of a geometry to fit well in the defined region.
-
-        We base the re-scaling on the minimum bounding rectangle of the geometry.
-        Take the max dimension of that rectangle, and scale it so that it becomes
-        somewhere between 10% and 50% of the size of our region. 
-        """
         xc = g0.centroid.xy[0][0]
         yc = g0.centroid.xy[1][0]
         g1 = shapely.affinity.translate(g0, xoff=-xc, yoff=-yc)
@@ -147,13 +140,7 @@ class RelationGenerator:
         g1 = shapely.affinity.rotate(g0, angle=angle, origin=g0.centroid.coords[0])
         return(g1)
     
-    def reposition(self, geoms):
-        """
-        Position a shape or shapes within the region.
-
-        Pick a random location that avoids any stated margin.
-        """
-        
+    def reposition(self, geoms):        
         if type(geoms) != list:
             geoms = [geoms]
         if len(geoms) == 1:
