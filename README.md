@@ -63,13 +63,12 @@ At this time, the types of relationships that can be generated are:
 
 ## Examples
 
-![point-on-linestring](images/point-on-linestring.png)
-![point-in-polygon](images/point-in-polygon.png)
-![linestring-intersects-linestring](images/linestring-intersects-linestring.png)
-![linestring-intersects-polygon](images/linestring-intersects-polygon.png)
-![polygon-intersects-polygon](images/polygon-intersects-polygon.png)
-![polygon-borders-polygon](images/polygon-borders-polygon.png)
-
+![point-on-linestring](https://github.com/odyssey-geospatial/geo-relations/raw/main/images/point-on-linestring.png)
+![point-in-polygon](https://github.com/odyssey-geospatial/geo-relations/raw/main/images/point-in-polygon.png)
+![linestring-intersects-linestring](https://github.com/odyssey-geospatial/geo-relations/raw/main/images/linestring-intersects-linestring.png)
+![linestring-intersects-polygon](https://github.com/odyssey-geospatial/geo-relations/raw/main/images/linestring-intersects-polygon.png)
+![polygon-intersects-polygon](https://github.com/odyssey-geospatial/geo-relations/raw/main/images/polygon-intersects-polygon.png)
+![polygon-borders-polygon](https://github.com/odyssey-geospatial/geo-relations/raw/main/images/polygon-borders-polygon.png)
 
 ## Supporting packages
 
@@ -83,10 +82,6 @@ At this time, the types of relationships that can be generated are:
 pip install geo-relations
 ```
 
-## Release History
-
-* 1.0.0: Coming soon
-
 ## Author and maintainers
 
 * John Collins -- `john@odyssey-geospatial.com`
@@ -94,7 +89,7 @@ pip install geo-relations
 ## Contributing
 
 1. Fork the repo (https://github.com/yourname/yourproject/fork)
-2. Create your feature branch (git checkout -b feature/fooBar)
-3. Commit your changes (git commit -am 'Add some fooBar')
-4. Push to the branch (git push origin feature/fooBar)
+2. Create your feature branch (git checkout -b feature/myNewFeature)
+3. Commit your changes (git commit -am 'Add my new feature')
+4. Push to the branch (git push origin feature/myNewFeature)
 5. Create a new Pull Request
